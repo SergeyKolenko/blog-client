@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Angular2TokenService } from 'angular2-token';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
@@ -13,6 +15,7 @@ import { PostService } from './shared/services/post.service';
 import { CommentService } from './shared/services/comment.service';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { PostNewComponent } from './posts/post-new/post-new.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +24,16 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     PostComponent,
     CommentsComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    PostNewComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AlertModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    RouterModule.forRoot(routes)
   ],
   providers: [
     PostService,
