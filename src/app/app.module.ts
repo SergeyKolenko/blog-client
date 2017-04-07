@@ -16,6 +16,8 @@ import { CommentService } from './shared/services/comment.service';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { PostNewComponent } from './posts/post-new/post-new.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { PostNewComponent } from './posts/post-new/post-new.component';
     CommentsComponent,
     SignInComponent,
     SignUpComponent,
-    PostNewComponent
+    PostNewComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
