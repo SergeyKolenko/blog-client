@@ -1,3 +1,82 @@
-<p>
-  sign-up works!
-</p>
+<div class="page-header">
+  <h1>Sign up</h1>
+</div>
+
+<div class="col-sm-8">
+  <form class="form-horizontal" [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm)">
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="email">
+        Email <sup>*</sup>
+      </label>
+      <div class="col-sm-9">
+        <input type="email" class="form-control" id="email" formControlName="email"
+               [ngClass]="{'invalid': !signUpForm.controls.email.valid && formSubmitted}">
+        <p class="help-block" *ngIf="formSubmitted" align="start">
+          <small *ngIf="signUpForm.controls.email.errors.required" class="text-danger">
+            Email can't be empty.
+          </small>
+          <small *ngIf="signUpForm.controls.email.errors.pattern" class="text-danger">
+            Email must be like 'example@mail.com'.
+          </small>
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="nickname">
+        Nickname <sup>*</sup>
+      </label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="nickname" id="nickname"
+               [ngClass]="{'invalid': !signUpForm.controls.nickname.valid && formSubmitted}">
+        <p class="help-block" *ngIf="formSubmitted" align="start">
+          <small *ngIf="!signUpForm.controls.nickname.valid" class="text-danger">
+            Nickname can't be empty.
+          </small>
+        </p>
+      </div>
+    </div>
+
+    <div formGroupName="passwordGroup">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="password">
+          Password <sup>*</sup>
+        </label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" required formControlName="password" id="password">
+          <p class="help-block" *ngIf="signUpForm.hasError('pattern','passwordGroup.password') && formSubmitted"
+             [ngStyle]="{'color': 'red'}" align="start">
+            Password is required
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="passwordConfirmation">
+          Password Confirmation <sup>*</sup>
+        </label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" required formControlName="passwordConfirmation" id="passwordConfirmation">
+          <p class="help-block" *ngIf="signUpForm.hasError('pattern','passwordGroup.passwordConfirmation') && formSubmitted"
+             [ngStyle]="{'color': 'red'}" align="start">
+            Password Confirmation is required. Password Confirmation must equal with password.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <button class="btn btn-primary" type="submit">
+          Sign up
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="bottom-left">
+    Do you have account?
+    Please <a [routerLink]="['/sign-in']">Sign In</a>
+  </div>
+</div>

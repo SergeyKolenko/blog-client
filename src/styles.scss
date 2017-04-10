@@ -2,3 +2,9 @@
 body{
   padding-top: 50px;
 }
+
+input, textarea{
+  &.invalid{
+    border-color: red;
+  }
+}

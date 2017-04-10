@@ -1,12 +1,9 @@
-import { User } from './user';
-
 export class Comment {
   id?: number;
-  user: User;
+  user_name: string;
   text: string;
 
-  constructor(user: User, text: string) {
-    this.user = user;
+  constructor(text: string) {
     this.text = text;
   }
 }

@@ -1,14 +1,10 @@
-import { Comment } from './comment';
-import { User } from './user';
-
 export class Post {
   id?: number;
   body: string;
   comments?: Comment[];
-  user: User;
+  user_name: string;
 
-  constructor(body: string, user: User) {
+  constructor(body: string) {
     this.body = body;
-    this.user = user;
   }
 }

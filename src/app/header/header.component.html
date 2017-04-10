@@ -8,17 +8,18 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">BLOG</a>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/posts">Posts</a></li>
-        <li ><a href="/users" disabled="disabled">Users</a></li>
+        <li class="active"><a [routerLink]="['/posts']">Posts</a></li>
+        <li><a [routerLink]="['/users']" >Users</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">USER</a></li>
-        <li><a href="#">SIGN OUT</a></li>
+        <li><a [routerLink]="['/users/1']">USER</a></li>
+        <li><a [routerLink]="['/sign-out']">SIGN OUT</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
