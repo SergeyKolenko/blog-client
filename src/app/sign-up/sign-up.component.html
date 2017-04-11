@@ -3,6 +3,15 @@
 </div>
 
 <div class="col-sm-8">
+
+  <div class="alert alert-danger" *ngIf="formSubmitted && serverErrors != undefined && serverErrors.length > 0">
+    <ul>
+      <li *ngFor="let error of serverErrors">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+
   <form class="form-horizontal" [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm)">
 
     <div class="form-group">
@@ -12,7 +21,7 @@
       <div class="col-sm-9">
         <input type="email" class="form-control" id="email" formControlName="email"
                [ngClass]="{'invalid': !signUpForm.controls.email.valid && formSubmitted}">
-        <p class="help-block" *ngIf="formSubmitted" align="start">
+        <p class="help-block" *ngIf="!signUpForm.controls.email.valid && formSubmitted" align="start">
           <small *ngIf="signUpForm.controls.email.errors.required" class="text-danger">
             Email can't be empty.
           </small>
@@ -30,7 +39,7 @@
       <div class="col-sm-9">
         <input type="text" class="form-control" formControlName="nickname" id="nickname"
                [ngClass]="{'invalid': !signUpForm.controls.nickname.valid && formSubmitted}">
-        <p class="help-block" *ngIf="formSubmitted" align="start">
+        <p class="help-block" *ngIf="!signUpForm.controls.nickname.valid && formSubmitted" align="start">
           <small *ngIf="!signUpForm.controls.nickname.valid" class="text-danger">
             Nickname can't be empty.
           </small>
@@ -44,10 +53,15 @@
           Password <sup>*</sup>
         </label>
         <div class="col-sm-9">
-          <input type="password" class="form-control" required formControlName="password" id="password">
-          <p class="help-block" *ngIf="signUpForm.hasError('pattern','passwordGroup.password') && formSubmitted"
-             [ngStyle]="{'color': 'red'}" align="start">
-            Password is required
+          <input type="password" class="form-control" required formControlName="password" id="password"
+                 [ngClass]="{'invalid': signUpForm.controls.passwordGroup.controls.password.invalid && formSubmitted}">
+          <p class="help-block" *ngIf="signUpForm.controls.passwordGroup.controls.password.invalid && formSubmitted" align="start">
+            <small *ngIf="signUpForm.controls.passwordGroup.controls.password.errors.required" class="text-danger">
+              Password is required
+            </small>
+            <small *ngIf="signUpForm.controls.passwordGroup.controls.password.errors.minlength" class="text-danger">
+              Password is short. Minimum 8 symbols.
+            </small>
           </p>
         </div>
       </div>
@@ -57,13 +71,16 @@
           Password Confirmation <sup>*</sup>
         </label>
         <div class="col-sm-9">
-          <input type="password" class="form-control" required formControlName="passwordConfirmation" id="passwordConfirmation">
-          <p class="help-block" *ngIf="signUpForm.hasError('pattern','passwordGroup.passwordConfirmation') && formSubmitted"
-             [ngStyle]="{'color': 'red'}" align="start">
-            Password Confirmation is required. Password Confirmation must equal with password.
+          <input type="password" class="form-control" required formControlName="passwordConfirmation" id="passwordConfirmation"
+                 [ngClass]="{'invalid': signUpForm.controls.passwordGroup.controls.passwordConfirmation.invalid && formSubmitted}">
+          <p class="help-block" *ngIf="signUpForm.controls.passwordGroup.controls.passwordConfirmation.invalid && formSubmitted" align="start">
+            <small *ngIf="!signUpForm.controls.passwordGroup.controls.passwordConfirmation.valid" class="text-danger">
+              Password Confirmation is required. Password Confirmation must equal with password.
+            </small>
           </p>
         </div>
       </div>
+
     </div>
 
     <div class="form-group">
@@ -77,6 +94,6 @@
 
   <div class="bottom-left">
     Do you have account?
-    Please <a [routerLink]="['/sign-in']">Sign In</a>
+    Please <a href="/sign-in" [routerLink]="['/sign-in']">sign in</a>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,8 +13,9 @@ export class SignUpComponent {
 
   public signUpForm: FormGroup;
   public formSubmitted: boolean = false;
+  public serverErrors: string[];
 
-  constructor(private _fb: FormBuilder, private _authService: AuthService) {
+  constructor(private _fb: FormBuilder, private _authService: AuthService, private router: Router) {
     this.signUpForm = _fb.group({
       nickname: [ '', Validators.required ],
       email: [ '', [
@@ -23,7 +25,7 @@ export class SignUpComponent {
       passwordGroup: _fb.group({
         password: [ '', [
           Validators.required,
-          Validators.minLength(6) ]
+          Validators.minLength(8) ]
         ],
         passwordConfirmation: [ '' ]
       }, { validator: this.equalValidator })
@@ -40,9 +42,15 @@ export class SignUpComponent {
     this.formSubmitted = true;
     if (form.valid) {
       this._authService.signUp(form.value)
-        .subscribe(() => console.log('created'));
-
-      console.log(form.value);
+        .subscribe(
+          () => this.router.navigate([ '/' ]),
+          error => {
+            console.log(error.json().errors.full_messages);
+            console.log(error.json().errors.full_messages as string[]);
+            this.serverErrors = error.json().errors.full_messages as string[];
+            console.log(this.serverErrors);
+          }
+        );
     }
   }
 
