@@ -18,6 +18,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { PostNewComponent } from './posts/post-new/post-new.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { FooterComponent } from './footer/footer.component';
   providers: [
     PostService,
     CommentService,
-    Angular2TokenService
+    Angular2TokenService,
+    AuthService
   ],
   bootstrap: [ AppComponent ]
 })

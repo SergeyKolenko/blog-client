@@ -4,12 +4,12 @@
 
 <div class="col-sm-8">
 
-  <div class="alert alert-danger" *ngIf="formSubmitted && serverErrors != undefined && serverErrors.length > 0">
-    <ul>
-      <li *ngFor="let error of serverErrors">
+  <div *ngIf="formSubmitted && serverErrors != undefined && serverErrors.length > 0">
+    <div *ngFor="let error of serverErrors">
+      <alert type="danger">
         {{error}}
-      </li>
-    </ul>
+      </alert>
+    </div>
   </div>
 
   <form class="form-horizontal" [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm)">

@@ -17,11 +17,13 @@
         <li routerLinkActive="active"><a routerLink="/posts">Posts</a></li>
         <li routerLinkActive="active"><a routerLink="/users" >Users</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <!--<li><a [routerLink]="['/users/1']">USER</a></li>-->
-        <!--<li><a [routerLink]="['/sign-out']">SIGN OUT</a></li>-->
+      <ul class="nav navbar-nav navbar-right" *ngIf="!(authService.userSignedIn$ | async)">
         <li routerLinkActive="active"><a routerLink="/sign-in" >SIGN IN</a></li>
         <li routerLinkActive="active"><a routerLink="/sign-up" >SIGN UP</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="(authService.userSignedIn$ | async)">
+        <li><a routerLink="/profile">USER Profile</a></li>
+        <li><a role="button" (click)="signOut()">SIGN OUT</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

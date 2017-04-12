@@ -3,13 +3,31 @@
 </div>
 
 <div class="col-sm-8">
-  <form class="form-horizontal">
+
+  <div *ngIf="formSubmitted && serverErrors != undefined && serverErrors.length > 0">
+    <div *ngFor="let error of serverErrors">
+      <alert type="danger">
+        {{error}}
+      </alert>
+    </div>
+  </div>
+
+  <form class="form-horizontal" [formGroup]="signInForm" (ngSubmit)="signIn(signInForm); $event.preventDefault();">
     <div class="form-group">
       <label class="col-sm-2 control-label" for="email">
         Email <sup>*</sup>
       </label>
       <div class="col-sm-9">
-        <input type="email" class="form-control" required name="email" id="email">
+        <input type="email" class="form-control" required formControlName="email" id="email"
+               [ngClass]="{'invalid': signInForm.controls.email.invalid && formSubmitted}">
+        <p class="help-block" *ngIf="signInForm.controls.email.invalid && formSubmitted" align="start">
+          <small *ngIf="signInForm.controls.email.errors.required" class="text-danger">
+            Email is required
+          </small>
+          <small *ngIf="signInForm.controls.email.errors.pattern" class="text-danger">
+            Email must be like 'example@mail.com'.
+          </small>
+        </p>
       </div>
     </div>
 
@@ -18,7 +36,16 @@
         Password <sup>*</sup>
       </label>
       <div class="col-sm-9">
-        <input type="password" class="form-control" required name="password" id="password">
+        <input type="password" class="form-control" required formControlName="password" id="password"
+               [ngClass]="{'invalid': signInForm.controls.password.invalid && formSubmitted}">
+        <p class="help-block" *ngIf="signInForm.controls.password.invalid && formSubmitted" align="start">
+          <small *ngIf="signInForm.controls.password.errors.required" class="text-danger">
+            Password is required
+          </small>
+          <small *ngIf="signInForm.controls.password.errors.minlength" class="text-danger">
+            Password is short. Minimum 8 symbols.
+          </small>
+        </p>
       </div>
     </div>
 
@@ -30,4 +57,8 @@
       </div>
     </div>
   </form>
+
+  <div class="bottom-left">
+    Do you have not account? <a routerLink="/sign-up">Join to us!</a>
+  </div>
 </div>

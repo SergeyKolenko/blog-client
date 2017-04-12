@@ -43,12 +43,9 @@ export class SignUpComponent {
     if (form.valid) {
       this._authService.signUp(form.value)
         .subscribe(
-          () => this.router.navigate([ '/' ]),
+          () => this.router.navigate([ '/sign-in' ]),
           error => {
-            console.log(error.json().errors.full_messages);
-            console.log(error.json().errors.full_messages as string[]);
             this.serverErrors = error.json().errors.full_messages as string[];
-            console.log(this.serverErrors);
           }
         );
     }
