@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
 
   constructor(protected authService: AuthService, private router: Router) {
+    // this.authService.validateToken();
   }
 
   public signOut(): void {

@@ -24,6 +24,6 @@ export const PostsRouter: Route[] = [
   {
     path: 'posts/:id/edit',
     component: PostComponent,
-    canActivate: [Angular2TokenService]
+    canActivate: [ Angular2TokenService ]
   }
 ];

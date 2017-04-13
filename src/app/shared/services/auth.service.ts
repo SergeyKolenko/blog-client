@@ -14,7 +14,12 @@ export class AuthService {
     this._tokenService.init({
       apiBase: environment.api_path
     });
-    this._tokenService.validateToken().map(
+    this.validateToken();
+  }
+
+  validateToken(): Observable<Response> {
+    console.log('Valid!!');
+    return this._tokenService.validateToken().map(
       res => {
         res.status === 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false);
         return res;
