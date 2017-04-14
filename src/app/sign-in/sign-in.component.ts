@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../shared/services/auth.service';
+import { Angular2TokenService } from "angular2-token";
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +14,7 @@ export class SignInComponent {
   public formSubmitted: boolean = false;
   public serverErrors: string[];
 
-  constructor(private _authToken: AuthService, private _fb: FormBuilder, private router: Router) {
+  constructor(private authToken: Angular2TokenService, private _fb: FormBuilder, private router: Router) {
     this.signInForm = _fb.group({
       email: [ '', [
         Validators.required,
@@ -30,12 +30,7 @@ export class SignInComponent {
   public signIn(form) {
     this.formSubmitted = true;
     if (form.valid) {
-      this._authToken.signIn(
-        {
-          email: form.value.email,
-          password: form.value.password
-        }
-      )
+      this.authToken.signIn(form.value)
         .subscribe(
           () => {
             this.router.navigate([ '' ]);

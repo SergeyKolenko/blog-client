@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthService } from './shared/services/auth.service';
 import { ProfileComponent } from './profile/profile.component';
+import { PostEditComponent } from './posts/post-edit/post-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProfileComponent } from './profile/profile.component';
     PostNewComponent,
     HeaderComponent,
     FooterComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,

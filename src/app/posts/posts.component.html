@@ -1,3 +1,9 @@
 <div class="page-header">
   <h1>Posts</h1>
 </div>
+
+<div class="col-sm-12">
+
+
+  <a routerLink="/posts/new" class="btn btn-success" *ngIf="tokenService.userSignedIn()">Create new post</a>
+</div>

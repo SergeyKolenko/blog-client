@@ -17,11 +17,11 @@
         <li routerLinkActive="active"><a routerLink="/posts">Posts</a></li>
         <li routerLinkActive="active"><a routerLink="/users" >Users</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right" *ngIf="!(authService.userSignedIn$ | async)">
+      <ul class="nav navbar-nav navbar-right" *ngIf="!tokenService.userSignedIn()">
         <li routerLinkActive="active"><a routerLink="/sign-in" >SIGN IN</a></li>
         <li routerLinkActive="active"><a routerLink="/sign-up" >SIGN UP</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right" *ngIf="(authService.userSignedIn$ | async)">
+      <ul class="nav navbar-nav navbar-right" *ngIf="tokenService.userSignedIn()">
         <li><a routerLink="/profile">USER Profile</a></li>
         <li><a role="button" (click)="signOut()">SIGN OUT</a></li>
       </ul>

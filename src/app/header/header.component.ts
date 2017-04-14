@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
+import { Angular2TokenService } from "angular2-token";
 
 
 @Component({
@@ -10,12 +10,11 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  constructor(protected authService: AuthService, private router: Router) {
-    // this.authService.validateToken();
+  constructor(private router: Router, public tokenService: Angular2TokenService) {
   }
 
   public signOut(): void {
-    this.authService.signOut()
+    this.tokenService.signOut()
       .subscribe(
         () => this.router.navigate([ '/' ])
       );
