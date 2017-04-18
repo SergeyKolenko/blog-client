@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../shared/services/auth.service';
 import { Angular2TokenService } from 'angular2-token';
 
 @Component({
@@ -10,13 +9,12 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(protected authTokenService: Angular2TokenService,
-              protected authService: AuthService,
+  constructor(protected tokenService: Angular2TokenService,
               private router: Router) {
   }
 
   signOut() {
-    this.authService.signOut()
+    this.tokenService.signOut()
       .subscribe(
         () => this.router.navigate([ '/' ])
       );

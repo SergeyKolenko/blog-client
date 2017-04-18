@@ -3,18 +3,30 @@
 </div>
 
 <div class="col-sm-8">
-  <form class="form" formGroup="postForm">
+  <form class="form" [formGroup]="postForm">
     <div class="form-group">
       <label class="control-label" for="title">
         Title
       </label>
-      <input type="text" formControlName="title" id="title" class="form-control">
+      <input type="text" formControlName="title" id="title" class="form-control"
+             [ngClass]="{'invalid': postForm.controls.title.invalid && formSubmitted}">
+      <p class="help-block" *ngIf="postForm.controls.title.invalid && formSubmitted">
+        <small class="text-danger">
+          Title can't be empty.
+        </small>
+      </p>
     </div>
     <div class="form-group">
       <label class="control-label" for="body">
         Body
       </label>
-      <textarea formControlName="body" id="body" class="form-control" rows="15"></textarea>
+      <textarea formControlName="body" id="body" class="form-control" rows="15"
+                [ngClass]="{'invalid': postForm.controls.body.invalid && formSubmitted}"></textarea>
+      <p class="help-block" *ngIf="postForm.controls.body.invalid && formSubmitted">
+        <small class="text-danger">
+          Body can't be empty.
+        </small>
+      </p>
     </div>
 
     <div class="form-group">

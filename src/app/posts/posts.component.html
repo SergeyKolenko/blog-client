@@ -5,5 +5,5 @@
 <div class="col-sm-12">
 
 
-  <a routerLink="/posts/new" class="btn btn-success" *ngIf="tokenService.userSignedIn()">Create new post</a>
+  <a routerLink="/posts/new" class="btn btn-success" *ngIf="tokenService.currentUserData">Create new post</a>
 </div>

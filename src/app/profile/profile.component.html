@@ -2,16 +2,16 @@
   <h1>User Profile</h1>
 </div>
 
-<div class="row" *ngIf="authTokenService.currentUserData">
+<div class="row" *ngIf="tokenService.currentUserData">
   <div class="col-sm-6">
     <table class="table col-sm-6">
       <tr>
         <td>Email:</td>
-        <td><b>{{authTokenService.currentUserData.email}}</b></td>
+        <td><b>{{tokenService.currentUserData.email}}</b></td>
       </tr>
       <tr>
         <td>Username:</td>
-        <td><b>{{authTokenService.currentUserData.nickname}}</b></td>
+        <td><b>{{tokenService.currentUserData.nickname}}</b></td>
       </tr>
     </table>
     <button class="btn btn-default" (click)="signOut()">
