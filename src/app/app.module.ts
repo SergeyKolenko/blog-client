@@ -21,6 +21,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthService } from './shared/services/auth.service';
 import { ProfileComponent } from './profile/profile.component';
 import { PostEditComponent } from './posts/post-edit/post-edit.component';
+import { PostResolver } from "./shared/resolvers/post.resolver";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PostEditComponent } from './posts/post-edit/post-edit.component';
     PostService,
     CommentService,
     Angular2TokenService,
-    AuthService
+    AuthService,
+    PostResolver
   ],
   bootstrap: [ AppComponent ]
 })
