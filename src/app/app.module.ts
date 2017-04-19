@@ -23,6 +23,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PostEditComponent } from './posts/post-edit/post-edit.component';
 import { PostResolver } from "./shared/resolvers/post.resolver";
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CatcherService } from "./shared/services/catcher.service";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CommentService,
     Angular2TokenService,
     AuthService,
-    PostResolver
+    PostResolver,
+    CatcherService
   ],
   bootstrap: [ AppComponent ]
 })
