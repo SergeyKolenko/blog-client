@@ -5,15 +5,22 @@ import { PostsComponent } from './posts.component';
 import { Angular2TokenService } from 'angular2-token';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostResolver } from "../shared/resolvers/post.resolver";
+import { PostsResolver } from "../shared/resolvers/posts.resolver";
 
 export const PostsRouter: Route[] = [
   {
     path: '',
-    component: PostsComponent
+    component: PostsComponent,
+    resolve: {
+      posts: PostsResolver
+    }
   },
   {
     path: 'posts',
-    component: PostsComponent
+    component: PostsComponent,
+    resolve: {
+      posts: PostsResolver
+    }
   },
   {
     path: 'posts/new',

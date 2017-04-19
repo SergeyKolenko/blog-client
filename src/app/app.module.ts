@@ -24,6 +24,7 @@ import { PostEditComponent } from './posts/post-edit/post-edit.component';
 import { PostResolver } from "./shared/resolvers/post.resolver";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CatcherService } from "./shared/services/catcher.service";
+import { PostsResolver } from "./shared/resolvers/posts.resolver";
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CatcherService } from "./shared/services/catcher.service";
     Angular2TokenService,
     AuthService,
     PostResolver,
+    PostsResolver,
     CatcherService
   ],
   bootstrap: [ AppComponent ]
