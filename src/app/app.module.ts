@@ -25,6 +25,8 @@ import { PostResolver } from "./shared/resolvers/post.resolver";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CatcherService } from "./shared/services/catcher.service";
 import { PostsResolver } from "./shared/resolvers/posts.resolver";
+import { FlashErrorsComponent } from './flash-errors/flash-errors.component';
+import { UserService } from "./shared/services/user.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { PostsResolver } from "./shared/resolvers/posts.resolver";
     FooterComponent,
     ProfileComponent,
     PostEditComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FlashErrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ import { PostsResolver } from "./shared/resolvers/posts.resolver";
     AuthService,
     PostResolver,
     PostsResolver,
-    CatcherService
+    CatcherService,
+    UserService
   ],
   bootstrap: [ AppComponent ]
 })

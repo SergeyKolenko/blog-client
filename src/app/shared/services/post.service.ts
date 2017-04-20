@@ -53,4 +53,14 @@ export class PostService {
       });
   }
 
+  updatePost(id: number, post: Post): Observable<Post> {
+    return this.authToken
+      .put(`posts/${id}`, post)
+      .map(res => res.json())
+      .catch(error => {
+        this.catcher.catch(error);
+        return Observable.of(error);
+      });
+  }
+
 }

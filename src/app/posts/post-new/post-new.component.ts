@@ -30,7 +30,7 @@ export class PostNewComponent implements OnInit {
       this.postService.createPost(this.postForm.value)
         .subscribe(
           res => this.router.navigate(['/posts', res.id]),
-          error => alert('Error')
+          error => console.log(error)
         );
     }
   }
