@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>User Profile</h1>
+  <h1>Your Profile</h1>
 </div>
 
 <div class="row" *ngIf="tokenService.currentUserData">
@@ -14,7 +14,9 @@
         <td><b>{{tokenService.currentUserData.nickname}}</b></td>
       </tr>
     </table>
-    <button class="btn btn-default" (click)="signOut()">
+    <button class="btn btn-danger" (click)="signOut()">
+      <span class="glyphicon glyphicon-log-out"></span>
+
       Sign out
     </button>
   </div>

@@ -19,7 +19,7 @@ import { PostNewComponent } from './posts/post-new/post-new.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthService } from './shared/services/auth.service';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './users/profile/profile.component';
 import { PostEditComponent } from './posts/post-edit/post-edit.component';
 import { PostResolver } from "./shared/resolvers/post.resolver";
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -27,6 +27,10 @@ import { CatcherService } from "./shared/services/catcher.service";
 import { PostsResolver } from "./shared/resolvers/posts.resolver";
 import { FlashErrorsComponent } from './flash-errors/flash-errors.component';
 import { UserService } from "./shared/services/user.service";
+import { UsersComponent } from './users/users.component';
+import { UserShowComponent } from './users/user-show/user-show.component';
+import { UserResolver } from "./shared/resolvers/user.resolver";
+import { UsersResolver } from "./shared/resolvers/users.resolver";
 
 @NgModule({
   declarations: [
@@ -42,7 +46,9 @@ import { UserService } from "./shared/services/user.service";
     ProfileComponent,
     PostEditComponent,
     NotFoundComponent,
-    FlashErrorsComponent
+    FlashErrorsComponent,
+    UsersComponent,
+    UserShowComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +67,9 @@ import { UserService } from "./shared/services/user.service";
     PostResolver,
     PostsResolver,
     CatcherService,
-    UserService
+    UserService,
+    UserResolver,
+    UsersResolver
   ],
   bootstrap: [ AppComponent ]
 })
