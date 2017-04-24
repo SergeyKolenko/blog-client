@@ -9,7 +9,7 @@ import { CommentService } from "../../shared/services/comment.service";
 })
 export class CommentFormComponent implements OnInit {
 
-  @Input() postId: number;
+  @Input() postID: number;
 
   public commentForm: FormGroup;
   public formSubmitted: boolean = false;
@@ -26,7 +26,7 @@ export class CommentFormComponent implements OnInit {
   createComment() {
     this.formSubmitted = true;
     if (this.commentForm.valid) {
-      this.commentService.createComment(this.postId, this.commentForm.value)
+      this.commentService.createComment(this.postID, this.commentForm.value)
         .subscribe(
           () => {
             this.commentForm.reset();

@@ -1,7 +1,7 @@
 <form class="form" [formGroup]="commentForm">
   <div class="form-group">
     <textarea class="form-control" [ngClass]="{'invalid': (formSubmitted && commentForm.controls.text.invalid)}"
-              placeholder="Your comment ..." formControlName="text"></textarea>
+              placeholder="Your comment ..." formControlName="text" rows="5"></textarea>
     <p class="help-block" *ngIf="(formSubmitted && commentForm.controls.text.invalid)">
       <small class="text-danger">
         Comment can't be empty.
