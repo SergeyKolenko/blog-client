@@ -36,3 +36,7 @@
   </div>
 </div>
 
+<app-comment-form [postId]="post.id" *ngIf="tokenService.currentUserData">
+
+</app-comment-form>
+
