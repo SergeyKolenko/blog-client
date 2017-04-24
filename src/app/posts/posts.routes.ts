@@ -6,6 +6,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostResolver } from "../shared/resolvers/post.resolver";
 import { PostsResolver } from "../shared/resolvers/posts.resolver";
+import { CommentsResolver } from "../shared/resolvers/comments.resolver";
 
 export const PostsRouter: Route[] = [
   {
@@ -31,7 +32,8 @@ export const PostsRouter: Route[] = [
     path: 'posts/:id',
     component: PostComponent,
     resolve: {
-      post: PostResolver
+      post: PostResolver,
+      comments: CommentsResolver
     }
   },
   {

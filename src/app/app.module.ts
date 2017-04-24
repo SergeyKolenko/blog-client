@@ -31,6 +31,8 @@ import { UsersComponent } from './users/users.component';
 import { UserShowComponent } from './users/user-show/user-show.component';
 import { UserResolver } from "./shared/resolvers/user.resolver";
 import { UsersResolver } from "./shared/resolvers/users.resolver";
+import { CommentFormComponent } from './comments/comment-form/comment-form.component';
+import { CommentsResolver } from "./shared/resolvers/comments.resolver";
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { UsersResolver } from "./shared/resolvers/users.resolver";
     NotFoundComponent,
     FlashErrorsComponent,
     UsersComponent,
-    UserShowComponent
+    UserShowComponent,
+    CommentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { UsersResolver } from "./shared/resolvers/users.resolver";
     CatcherService,
     UserService,
     UserResolver,
-    UsersResolver
+    UsersResolver,
+    CommentsResolver
   ],
   bootstrap: [ AppComponent ]
 })

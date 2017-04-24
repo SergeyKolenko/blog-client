@@ -4,7 +4,17 @@
       <div class="panel-heading">
         <h3 class="panel-title"><b>{{post.title}}</b></h3>
         <small>
-          created by <b>{{post.user.nickname}}</b> at <i>{{post.created_at | date: 'dd.MM.yyyy HH:mm:ss'}}</i>
+          created by
+          <a [routerLink]="['/users', post.user.id ]" class="alert-link" title="See profile"
+             *ngIf="!(tokenService.currentUserData) || tokenService.currentUserData.id !== post.user.id">
+            <b>{{post.user.nickname}}</b>
+          </a>
+          <a [routerLink]="['/profile' ]" class="alert-link" title="See profile"
+             *ngIf="tokenService.currentUserData && tokenService.currentUserData.id === post.user.id">
+            <b>{{post.user.nickname}}</b>
+          </a>
+          at
+          <i>{{post.created_at | date: 'dd.MM.yyyy HH:mm:ss'}}</i>
         </small>
       </div>
       <div class="panel-body">
