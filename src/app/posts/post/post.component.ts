@@ -13,7 +13,6 @@ export class PostComponent {
 
   public post: Post;
 
-  public text = `<p>Hello \n World</p>`;
   constructor(private route: ActivatedRoute,
               public tokenService: Angular2TokenService,
               private router: Router,

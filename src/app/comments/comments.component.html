@@ -2,16 +2,14 @@
   <div class="col-sm-12">
     <h3>Comments</h3>
     <hr>
+
+
+
     <div *ngFor="let comment of comments">
       <small class="text-info">
         <i>
           Commented by
-          <a [routerLink]="['/users', post.user.id ]" title="See profile"
-             *ngIf="!(tokenService.currentUserData) || tokenService.currentUserData.id !== comment.user.id">
-            <b>{{comment.user.nickname}}</b>
-          </a>
-          <a [routerLink]="['/profile' ]" title="See profile"
-             *ngIf="tokenService.currentUserData && tokenService.currentUserData.id === comment.user.id">
+          <a [routerLink]="['/users', comment.user.id ]" title="See profile">
             <b>{{comment.user.nickname}}</b>
           </a>
           at {{comment.created_at | date: 'dd.MM.yyyy HH:mm:ss' }}</i></small>

@@ -5,12 +5,7 @@
         <h3 class="panel-title"><b>{{post.title}}</b></h3>
         <small>
           created by
-          <a [routerLink]="['/users', post.user.id ]" class="alert-link" title="See profile"
-             *ngIf="!(tokenService.currentUserData) || tokenService.currentUserData.id !== post.user.id">
-            <b>{{post.user.nickname}}</b>
-          </a>
-          <a [routerLink]="['/profile' ]" class="alert-link" title="See profile"
-             *ngIf="tokenService.currentUserData && tokenService.currentUserData.id === post.user.id">
+          <a [routerLink]="['/users', post.user.id ]" class="alert-link" title="See profile">
             <b>{{post.user.nickname}}</b>
           </a>
           at

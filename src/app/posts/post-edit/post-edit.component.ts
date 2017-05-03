@@ -19,7 +19,7 @@ export class PostEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private postService: PostService,
-              public tokenService: Angular2TokenService,
+              public  tokenService: Angular2TokenService,
               private router: Router,
               private fb: FormBuilder) {
     this.post = this.route.snapshot.data[ 'post' ];
