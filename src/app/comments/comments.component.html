@@ -18,3 +18,7 @@
     </div>
   </div>
 </div>
+
+
+<app-comment-form [postID]="postID" *ngIf="tokenService.currentUserData" (commentAdded)="fetchComments($event)">
+</app-comment-form>

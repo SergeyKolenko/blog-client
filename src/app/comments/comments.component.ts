@@ -32,6 +32,7 @@ export class CommentsComponent implements OnInit {
       );
   }
 
+
   ngOnInit() {
     // this.fetchComments();
   }
