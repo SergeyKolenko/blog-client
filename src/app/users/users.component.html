@@ -1,28 +1,44 @@
 <div class="page-header">
   <h1>Users</h1>
 </div>
-<div class="col-sm-12">
 
-  <table class="table table-bordered">
-    <tr *ngFor="let user of users">
-      <td>
-        {{user.nickname}}
-        <span *ngIf="tokenService.currentUserData && tokenService.currentUserData.id === user.id" class="badge"> It's you!</span>
-      </td>
-      <td>
-        {{user.email}}
-      </td>
-      <td>
-        <a [routerLink]="['/users', user.id]" class="btn btn-sm btn-primary"
-           *ngIf="!(tokenService.currentUserData && tokenService.currentUserData.id === user.id)">
-          See details
-        </a>
-        <a [routerLink]="['/profile']" class="btn btn-sm btn-success"
-           *ngIf="tokenService.currentUserData && tokenService.currentUserData.id === user.id">
-          Profile!
-        </a>
-      </td>
-    </tr>
-  </table>
+<div class="row">
+  <div class="col-sm-12">
 
+    <table class="table table-bordered">
+      <tr class="info">
+        <th>Nickname</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let user of splitedUsers[currentPage - 1]">
+        <td>
+          {{user.nickname}}
+          <span *ngIf="tokenService.currentUserData && tokenService.currentUserData.id === user.id" class="badge"> It's you!</span>
+        </td>
+        <td>
+          {{user.email}}
+        </td>
+        <td>
+          <a [routerLink]="['/users', user.id]" class="btn btn-sm btn-primary"
+             *ngIf="!(tokenService.currentUserData && tokenService.currentUserData.id === user.id)">
+            <span class="glyphicon glyphicon-share-alt"></span> See details
+          </a>
+          <a [routerLink]="['/profile']" class="btn btn-sm btn-success"
+             *ngIf="tokenService.currentUserData && tokenService.currentUserData.id === user.id">
+            <span class="glyphicon glyphicon-user"></span> Profile!
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-4">
+    <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" class="pagination-sm"
+                [boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event" [itemsPerPage]="itemsPerPage"
+                firstText="<<" lastText=">>" previousText="<" nextText=">"></pagination>
+  </div>
 </div>

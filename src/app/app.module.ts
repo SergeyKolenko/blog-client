@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './posts/post/post.component';
 import { CommentsComponent } from './comments/comments.component';
-import { AlertModule, ModalModule } from 'ng2-bootstrap';
+import { AlertModule, ModalModule, PaginationModule } from 'ng2-bootstrap';
 import { PostService } from './shared/services/post.service';
 import { CommentService } from './shared/services/comment.service';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -60,6 +60,7 @@ import { CommentsResolver } from "./shared/resolvers/comments.resolver";
     HttpModule,
     AlertModule.forRoot(),
     ModalModule.forRoot(),
+    PaginationModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
   providers: [
